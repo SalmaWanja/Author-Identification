@@ -8,6 +8,8 @@ nltk.download('stopwords')
 app = Flask(__name__)
 CORS(app)
 
+import sklearn
+
 
 @app.route('/author_id/api/remove_stopwords', methods=['POST'])
 def remove_stopwords():     
@@ -35,3 +37,15 @@ def getFrequencyDistribution(text):
     print(len(vocabulary))
     frequency_dist = nltk.FreqDist(tokens)
     return sorted(frequency_dist,key=frequency_dist.__getitem__, reverse=True)[0:50]
+
+# vercorize text (feature extraction)
+def vectorize(xtrain,xtest):
+    from sklearn.feature_extraction.text import TfidfTransformer
+    from sklearn.feature_extraction.text import TfidfVectorizer
+
+    vectorizer = TfidfVectorizer()
+    train_vectors = vectorizer.fit_transform(xtrain)
+    test_vectors = vectorizer.transform(xtest)
+    print(train_vectors.shape, test_vectors.shape)
+
+# classifier
