@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 import nltk
-# nltk.download('stopwords')
+nltk.download('stopwords')
 
 # calculating frequency of stop words
-
-
 def stopwords_frequency(text):
     from nltk.corpus import stopwords
     english_stop_words = stopwords.words('english')
@@ -14,28 +12,24 @@ def stopwords_frequency(text):
             stopword_count = stopword_count + 1
     return stopword_count
 
-# calculating the distribution of stopwords
-
-
-def stopwords_distribution(text):
+# calculating the frequency ratio of stopwords vs text length
+def stopwords_frequency_ratio(text):
     stopwords_count = stopwords_frequency(text)
     text_length = len(text.split())
-    distribution = stopwords_count/float(text_length)
-    return distribution
+    frequency_ratio = stopwords_count/float(text_length)
+    return frequency_ratio
 
-# sentence length distribution
-
-
+# calculating sentense length distribution
 def sentence_length_distribution(text):
     # breakdown text into sentences
     sentences = nltk.tokenize.sent_tokenize(text)
     # determine the distribution of sentences
-    # simple sentence - has no conjunctions
-    # compound sentence = has one conjunction joining two sentences
-    # complex sentence = has one or more conjunctions
-    # conjunctions can be either coordinating/subordinating
-    # coordinating_conjunctions = ["for", "and", "nor", "but", "or", "yet", "so"]
-    # subordinating_conjunctions = ["after", "as", "although", "because", "before", "even though", "if", "once", "rather than", "since", "that", "though", "unless", "until", "when", "whenever", "whereas", "while"]
+        # simple sentence - has no conjunctions
+        # compound sentence = has one conjunction joining two sentences
+        # complex sentence = has one or more conjunctions
+        # conjunctions can be either coordinating/subordinating
+        # coordinating_conjunctions = ["for", "and", "nor", "but", "or", "yet", "so"]
+        # subordinating_conjunctions = ["after", "as", "although", "because", "before", "even though", "if", "once", "rather than", "since", "that", "though", "unless", "until", "when", "whenever", "whereas", "while"]
     conjunctions = ["for", "and", "nor", "but", "or", "yet", "so","after", "as", "although", "because", "before", "even though", "if", "once", "rather than", "since", "that", "though", "unless", "until", "when", "whenever", "whereas", "while"]
     # number of conjunctions in sentences
     conjunction_distribution = []
@@ -50,6 +44,7 @@ def sentence_length_distribution(text):
     compound_sentence_count = 0
     complex_sentence_count = 0
 
+    # categorizing sentences based on conjunction count
     for count in conjunction_distribution:
         if count == 0:
             simple_sentence_count += 1

@@ -65,6 +65,7 @@ def stopwords_frequency_ratio(text):
     frequency_ratio = stopwords_count/float(text_length)
     return frequency_ratio
 
+# calculating sentense length distribution
 def sentence_length_distribution(text):
     # breakdown text into sentences
     sentences = nltk.tokenize.sent_tokenize(text)
@@ -103,3 +104,12 @@ def sentence_length_distribution(text):
     complex_sentence_distribution = complex_sentence_count/float(len(sentences))      
 
     return [simple_sentence_distribution, compound_sentence_distribution, complex_sentence_distribution]
+
+    # naive bayes - assumes that prodictors/features used are independent of one another
+    # out features include:
+        # frequency of stopwords as a ratio
+        # sentence length distribution
+            # simple sentences
+            # compound sentences
+            # complex sentences
+    
