@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 import nltk
+import statistics
+import scipy.stats
+import math
 # nltk.download('stopwords')
 
 # calculating frequency of stop words
@@ -96,13 +99,94 @@ def multinomial_naive_bayes():
     class2_occurrence_ratio = class2_counter/float(dataset_size) 
     class3_occurrence_ratio = class3_counter/float(dataset_size) 
 
-    # get sentence length distribution and stop word frequency for all faith oneya's articles
+    # FEATURE STOPWORD FREQUENCY
+    class1_stopwords_frequency_arr = []
+    class2_stopwords_frequency_arr = []
+    class3_stopwords_frequency_arr = []
+    # get stopword frequencies, calculate mean and stdeviation
     i = 0
     while i < 10:
-        print(sentence_length_distribution(dataset[9+i][1]),stopwords_frequency_ratio(dataset[9+i][1]))
+        class1_stopwords_frequency_arr.append(stopwords_frequency_ratio(dataset[i][1]))
+        class2_stopwords_frequency_arr.append(stopwords_frequency_ratio(dataset[9+i][1]))
+        class3_stopwords_frequency_arr.append(stopwords_frequency_ratio(dataset[18+i][1]))
         i += 1
 
+    # class 1
+    class1_stopwords_frequency_mean = statistics.mean(class1_stopwords_frequency_arr)
+    class1_stopwords_frequency_stdev = statistics.stdev(class1_stopwords_frequency_arr)
+    # class2
+    class2_stopwords_frequency_mean = statistics.mean(class2_stopwords_frequency_arr)
+    class2_stopwords_frequency_stdev = statistics.stdev(class2_stopwords_frequency_arr)
+    # class3
+    class3_stopwords_frequency_mean = statistics.mean(class3_stopwords_frequency_arr)
+    class3_stopwords_frequency_stdev = statistics.stdev(class3_stopwords_frequency_arr)
 
+    # FEATURE SENTENCE DISTRIBUTION
+    # SIMPLE SENTENCE DISTRIBUTION
+    class1_simple_sentence_distribution_arr = []
+    class2_simple_sentence_distribution_arr = []
+    class3_simple_sentence_distribution_arr = []
+
+    i = 0
+    while i < 10:
+        class1_simple_sentence_distribution_arr.append(sentence_length_distribution(dataset[i][1])[0])
+        class2_simple_sentence_distribution_arr.append(sentence_length_distribution(dataset[9+i][1])[0])
+        class3_simple_sentence_distribution_arr.append(sentence_length_distribution(dataset[18+i][1])[0])
+        i += 1
+    
+     # class 1
+    class1_simple_sentence_distribution_mean = statistics.mean(class1_simple_sentence_distribution_arr)
+    class1_simple_sentence_distribution_stdev = statistics.stdev(class1_simple_sentence_distribution_arr)
+    # class2
+    class2_simple_sentence_distribution_mean = statistics.mean(class2_simple_sentence_distribution_arr)
+    class2_simple_sentence_distribution_stdev = statistics.stdev(class2_simple_sentence_distribution_arr)
+    # class3
+    class3_simple_sentence_distribution_mean = statistics.mean(class3_simple_sentence_distribution_arr)
+    class3_simple_sentence_distribution_stdev = statistics.stdev(class3_simple_sentence_distribution_arr)
+
+    # COMPOUND SENTENCE DISTRIBUTION
+    class1_compound_sentence_distribution_arr = []
+    class2_compound_sentence_distribution_arr = []
+    class3_compound_sentence_distribution_arr = []
+
+    i = 0
+    while i < 10:
+        class1_compound_sentence_distribution_arr.append(sentence_length_distribution(dataset[i][1])[1])
+        class2_compound_sentence_distribution_arr.append(sentence_length_distribution(dataset[9+i][1])[1])
+        class3_compound_sentence_distribution_arr.append(sentence_length_distribution(dataset[18+i][1])[1])
+        i += 1
+     # class 1
+    class1_compound_sentence_distribution_stdev = statistics.stdev(class1_compound_sentence_distribution_arr)
+    class1_compound_sentence_distribution_mean = statistics.mean(class1_compound_sentence_distribution_arr)
+    # class2
+    class2_compound_sentence_distribution_mean = statistics.mean(class2_compound_sentence_distribution_arr)
+    class2_compound_sentence_distribution_stdev = statistics.stdev(class2_compound_sentence_distribution_arr)
+    # class3
+    class3_compound_sentence_distribution_mean = statistics.mean(class3_compound_sentence_distribution_arr)
+    class3_compound_sentence_distribution_stdev = statistics.stdev(class3_compound_sentence_distribution_arr)
+
+    # COMPLEX SENTENCE DISTRIBUTION
+    class1_complex_sentence_distribution_arr = []
+    class2_complex_sentence_distribution_arr = []
+    class3_complex_sentence_distribution_arr = []
+
+    i = 0
+    while i < 10:
+        class1_complex_sentence_distribution_arr.append(sentence_length_distribution(dataset[i][1])[2])
+        class2_complex_sentence_distribution_arr.append(sentence_length_distribution(dataset[9+i][1])[2])
+        class3_complex_sentence_distribution_arr.append(sentence_length_distribution(dataset[18+i][1])[2])
+        i += 1
+     # class 1
+    class1_complex_sentence_distribution_stdev = statistics.stdev(class1_complex_sentence_distribution_arr)
+    class1_complex_sentence_distribution_mean = statistics.mean(class1_complex_sentence_distribution_arr)
+    # class2
+    class2_complex_sentence_distribution_mean = statistics.mean(class2_complex_sentence_distribution_arr)
+    class2_complex_sentence_distribution_stdev = statistics.stdev(class2_complex_sentence_distribution_arr)
+    # class3
+    class3_complex_sentence_distribution_mean = statistics.mean(class3_complex_sentence_distribution_arr)
+    class3_complex_sentence_distribution_stdev = statistics.stdev(class3_complex_sentence_distribution_arr)
+
+    print 'done'
 
 
 # print(sentence_length_distribution('When it’s not an integer, the highest probability number of events will be the nearest integer to the rate parameter, since the Poisson distribution is only defined for a discrete number of events. The discrete nature of the Poisson distribution is also why this is a probability mass function and not a density function. We can use the Poisson Distribution mass function to find the probability of observing a number of events over an interval generated by a Poisson process. Another use of the mass function equation — as we’ll see later — is to find the probability of waiting some time between events. For the problem we’ll solve with a Poisson distribution, we could continue with website failures, but I propose something grander. In my childhood, my father would often take me into our yard to observe (or try to observe) meteor showers. We were not space geeks, but watching objects from outer space burn up in the sky was enough to get us outside even though meteor showers always seemed to occur in the coldest months. The number of meteors seen can be modeled as a Poisson distribution because the meteors are independent, the average number of meteors per hour is constant (in the short term), and this is an approximation meteors don’t occur simultaneously. To characterize the Poisson distribution, all we need is the rate parameter which is the number of events/interval * interval length. From what I remember, we were told to expect 5 meteors per hour on average or 1 every 12 minutes. Due to the limited patience of a young child (especially on a freezing night), we never stayed out more than 60 minutes, so we’ll use that as the time period. Putting the two together, we get:'))
