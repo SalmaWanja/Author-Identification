@@ -96,7 +96,7 @@ def multinomial_naive_bayes():
     class2_occurrence_ratio = class2_counter/float(dataset_size) 
     class3_occurrence_ratio = class3_counter/float(dataset_size) 
 
-    # get sentence length distribution for all faith oneya's articles
+    # get sentence length distribution and stop word frequency for all faith oneya's articles
     i = 0
     while i < 10:
         print(sentence_length_distribution(dataset[9+i][1]),stopwords_frequency_ratio(dataset[9+i][1]))
