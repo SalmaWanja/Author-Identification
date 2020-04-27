@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import nltk
-import statistics
+# import statistics
 import scipy.stats
 import math
 from math import sqrt
