@@ -122,9 +122,9 @@ def naive_bayes():
         class1_stopwords_frequency_arr.append(
             stopwords_frequency_ratio(dataset[i][1]))
         class2_stopwords_frequency_arr.append(
-            stopwords_frequency_ratio(dataset[9+i][1]))
+            stopwords_frequency_ratio(dataset[10+i][1]))
         class3_stopwords_frequency_arr.append(
-            stopwords_frequency_ratio(dataset[18+i][1]))
+            stopwords_frequency_ratio(dataset[20+i][1]))
         i += 1
 
     # class 1
@@ -154,9 +154,9 @@ def naive_bayes():
         class1_simple_sentence_distribution_arr.append(
             sentence_length_distribution(dataset[i][1])[0])
         class2_simple_sentence_distribution_arr.append(
-            sentence_length_distribution(dataset[9+i][1])[0])
+            sentence_length_distribution(dataset[10+i][1])[0])
         class3_simple_sentence_distribution_arr.append(
-            sentence_length_distribution(dataset[18+i][1])[0])
+            sentence_length_distribution(dataset[20+i][1])[0])
         i += 1
 
      # class 1
@@ -185,9 +185,9 @@ def naive_bayes():
         class1_compound_sentence_distribution_arr.append(
             sentence_length_distribution(dataset[i][1])[1])
         class2_compound_sentence_distribution_arr.append(
-            sentence_length_distribution(dataset[9+i][1])[1])
+            sentence_length_distribution(dataset[10+i][1])[1])
         class3_compound_sentence_distribution_arr.append(
-            sentence_length_distribution(dataset[18+i][1])[1])
+            sentence_length_distribution(dataset[20+i][1])[1])
         i += 1
      # class 1
     class1_compound_sentence_distribution_stdev = statistics.stdev(
@@ -215,9 +215,9 @@ def naive_bayes():
         class1_complex_sentence_distribution_arr.append(
             sentence_length_distribution(dataset[i][1])[2])
         class2_complex_sentence_distribution_arr.append(
-            sentence_length_distribution(dataset[9+i][1])[2])
+            sentence_length_distribution(dataset[10+i][1])[2])
         class3_complex_sentence_distribution_arr.append(
-            sentence_length_distribution(dataset[18+i][1])[2])
+            sentence_length_distribution(dataset[20+i][1])[2])
         i += 1
      # class 1
     class1_complex_sentence_distribution_stdev = statistics.stdev(
@@ -255,16 +255,17 @@ def calculate_probability(x, mean, stdev):
 
 def test_classifier(class1_stats, class2_stats, class3_stats, dataset, class1_occurrence_ratio, class2_occurrence_ratio, class3_occurrence_ratio):
     labels = {'Faith Oneya': 1, 'Bitange Ndemo': 2, 'Abigail Arunga': 3}
-
+    # test class 1
+    print('TESTING CLASS 1 - FAITH ONEYA')
     i = 0
-    while i < 3:
-        stopwords_frequency = stopwords_frequency_ratio(dataset[25+i][1])
+    while i < 10:
+        stopwords_frequency = stopwords_frequency_ratio(dataset[i][1])
         simple_sentence_distribution = sentence_length_distribution(
-            dataset[25+i][1])[0]
+            dataset[i][1])[0]
         compound_sentence_distribution = sentence_length_distribution(
-            dataset[25+i][1])[1]
+            dataset[i][1])[1]
         complex_sentence_distribution = sentence_length_distribution(
-            dataset[25+i][1])[2]
+            dataset[i][1])[2]
 
         # get probabilities and compare classes
         # class1
@@ -311,11 +312,137 @@ def test_classifier(class1_stats, class2_stats, class3_stats, dataset, class1_oc
         # print(class3_probability)
         # print(class1_probability, class2_probability, class3_probability)
         if(class1_probability > class2_probability and class1_probability > class3_probability):
-            print('Class 1 - Faith Oneya')
+            print('Predicted Class 1 - Faith Oneya, Actual - Faith Oneya')
         elif(class2_probability > class1_probability and class2_probability > class3_probability):
-            print('Class 2 - Bitange Ndemo')
+            print('Predicted Class 2 - Bitange Ndemo, Actual - Faith Oneya')
         elif(class3_probability > class1_probability and class3_probability > class2_probability):
-            print('Class 3 - Abigail Arunga')
+            print('Predicted Class 3 - Abigail Arunga, Actual - Faith Oneya')
+        i += 1
+    # test class 2
+    print('TESTING CLASS 2 - BITANGE NDEMO')
+    i = 0
+    while i < 10:
+        stopwords_frequency = stopwords_frequency_ratio(dataset[10+i][1])
+        simple_sentence_distribution = sentence_length_distribution(
+            dataset[10+i][1])[0]
+        compound_sentence_distribution = sentence_length_distribution(
+            dataset[10+i][1])[1]
+        complex_sentence_distribution = sentence_length_distribution(
+            dataset[10+i][1])[2]
+
+        # get probabilities and compare classes
+        # class1
+        probability_stopwords_frequency = calculate_probability(
+            stopwords_frequency, class1_stats['stopwordsFrequency']['mean'], class1_stats['stopwordsFrequency']['stdev'])
+        probability_simple_sentence_distribution = calculate_probability(
+            simple_sentence_distribution, class1_stats['simpleSentenceDistribution']['mean'], class1_stats['simpleSentenceDistribution']['stdev'])
+        probability_compound_sentence_distribution = calculate_probability(
+            compound_sentence_distribution, class1_stats['compoundSentenceDistribution']['mean'], class1_stats['compoundSentenceDistribution']['stdev'])
+        probability_complex_sentence_distribution = calculate_probability(
+            complex_sentence_distribution, class1_stats['complexSentenceDistribution']['mean'], class1_stats['complexSentenceDistribution']['stdev'])
+        # print(probability_stopwords_frequency, probability_simple_sentence_distribution,
+        #       probability_compound_sentence_distribution, probability_complex_sentence_distribution)
+        class1_probability = (probability_stopwords_frequency*probability_simple_sentence_distribution *
+                              probability_compound_sentence_distribution*probability_complex_sentence_distribution)*class1_occurrence_ratio
+        # print(class1_probability)
+        # class2
+        probability_stopwords_frequency = calculate_probability(
+            stopwords_frequency, class2_stats['stopwordsFrequency']['mean'], class2_stats['stopwordsFrequency']['stdev'])
+        probability_simple_sentence_distribution = calculate_probability(
+            simple_sentence_distribution, class2_stats['simpleSentenceDistribution']['mean'], class2_stats['simpleSentenceDistribution']['stdev'])
+        probability_compound_sentence_distribution = calculate_probability(
+            compound_sentence_distribution, class2_stats['compoundSentenceDistribution']['mean'], class2_stats['compoundSentenceDistribution']['stdev'])
+        probability_complex_sentence_distribution = calculate_probability(
+            complex_sentence_distribution, class2_stats['complexSentenceDistribution']['mean'], class2_stats['complexSentenceDistribution']['stdev'])
+        # print(probability_stopwords_frequency, probability_simple_sentence_distribution,
+        #       probability_compound_sentence_distribution, probability_complex_sentence_distribution)
+        class2_probability = (probability_stopwords_frequency*probability_simple_sentence_distribution *
+                              probability_compound_sentence_distribution*probability_complex_sentence_distribution) * class2_occurrence_ratio
+        # print(class2_probability)
+        # class3
+        probability_stopwords_frequency = calculate_probability(
+            stopwords_frequency, class3_stats['stopwordsFrequency']['mean'], class3_stats['stopwordsFrequency']['stdev'])
+        probability_simple_sentence_distribution = calculate_probability(
+            simple_sentence_distribution, class3_stats['simpleSentenceDistribution']['mean'], class3_stats['simpleSentenceDistribution']['stdev'])
+        probability_compound_sentence_distribution = calculate_probability(
+            compound_sentence_distribution, class3_stats['compoundSentenceDistribution']['mean'], class3_stats['compoundSentenceDistribution']['stdev'])
+        probability_complex_sentence_distribution = calculate_probability(
+            complex_sentence_distribution, class3_stats['complexSentenceDistribution']['mean'], class3_stats['complexSentenceDistribution']['stdev'])
+        # print(probability_stopwords_frequency, probability_simple_sentence_distribution,
+        #       probability_compound_sentence_distribution, probability_complex_sentence_distribution)
+        class3_probability = (probability_stopwords_frequency*probability_simple_sentence_distribution *
+                              probability_compound_sentence_distribution*probability_complex_sentence_distribution) * class3_occurrence_ratio
+        # print(class3_probability)
+        # print(class1_probability, class2_probability, class3_probability)
+        if(class1_probability > class2_probability and class1_probability > class3_probability):
+            print('Predicted Class 1 - Faith Oneya, Actual - Bitange Ndemo')
+        elif(class2_probability > class1_probability and class2_probability > class3_probability):
+            print('Predicted Class 2 - Bitange Ndemo, Actual - Bitange Ndemo')
+        elif(class3_probability > class1_probability and class3_probability > class2_probability):
+            print('Predicted Class 3 - Abigail Arunga, Actual - Bitange Ndemo')
+        i += 1
+    # test class 3
+    print('TESTING CLASS 3 - ABIGAIL ARUNGA')
+    i = 0
+    while i < 10:
+        stopwords_frequency = stopwords_frequency_ratio(dataset[20+i][1])
+        simple_sentence_distribution = sentence_length_distribution(
+            dataset[20+i][1])[0]
+        compound_sentence_distribution = sentence_length_distribution(
+            dataset[20+i][1])[1]
+        complex_sentence_distribution = sentence_length_distribution(
+            dataset[20+i][1])[2]
+
+        # get probabilities and compare classes
+        # class1
+        probability_stopwords_frequency = calculate_probability(
+            stopwords_frequency, class1_stats['stopwordsFrequency']['mean'], class1_stats['stopwordsFrequency']['stdev'])
+        probability_simple_sentence_distribution = calculate_probability(
+            simple_sentence_distribution, class1_stats['simpleSentenceDistribution']['mean'], class1_stats['simpleSentenceDistribution']['stdev'])
+        probability_compound_sentence_distribution = calculate_probability(
+            compound_sentence_distribution, class1_stats['compoundSentenceDistribution']['mean'], class1_stats['compoundSentenceDistribution']['stdev'])
+        probability_complex_sentence_distribution = calculate_probability(
+            complex_sentence_distribution, class1_stats['complexSentenceDistribution']['mean'], class1_stats['complexSentenceDistribution']['stdev'])
+        # print(probability_stopwords_frequency, probability_simple_sentence_distribution,
+        #       probability_compound_sentence_distribution, probability_complex_sentence_distribution)
+        class1_probability = (probability_stopwords_frequency*probability_simple_sentence_distribution *
+                              probability_compound_sentence_distribution*probability_complex_sentence_distribution)*class1_occurrence_ratio
+        # print(class1_probability)
+        # class2
+        probability_stopwords_frequency = calculate_probability(
+            stopwords_frequency, class2_stats['stopwordsFrequency']['mean'], class2_stats['stopwordsFrequency']['stdev'])
+        probability_simple_sentence_distribution = calculate_probability(
+            simple_sentence_distribution, class2_stats['simpleSentenceDistribution']['mean'], class2_stats['simpleSentenceDistribution']['stdev'])
+        probability_compound_sentence_distribution = calculate_probability(
+            compound_sentence_distribution, class2_stats['compoundSentenceDistribution']['mean'], class2_stats['compoundSentenceDistribution']['stdev'])
+        probability_complex_sentence_distribution = calculate_probability(
+            complex_sentence_distribution, class2_stats['complexSentenceDistribution']['mean'], class2_stats['complexSentenceDistribution']['stdev'])
+        # print(probability_stopwords_frequency, probability_simple_sentence_distribution,
+        #       probability_compound_sentence_distribution, probability_complex_sentence_distribution)
+        class2_probability = (probability_stopwords_frequency*probability_simple_sentence_distribution *
+                              probability_compound_sentence_distribution*probability_complex_sentence_distribution) * class2_occurrence_ratio
+        # print(class2_probability)
+        # class3
+        probability_stopwords_frequency = calculate_probability(
+            stopwords_frequency, class3_stats['stopwordsFrequency']['mean'], class3_stats['stopwordsFrequency']['stdev'])
+        probability_simple_sentence_distribution = calculate_probability(
+            simple_sentence_distribution, class3_stats['simpleSentenceDistribution']['mean'], class3_stats['simpleSentenceDistribution']['stdev'])
+        probability_compound_sentence_distribution = calculate_probability(
+            compound_sentence_distribution, class3_stats['compoundSentenceDistribution']['mean'], class3_stats['compoundSentenceDistribution']['stdev'])
+        probability_complex_sentence_distribution = calculate_probability(
+            complex_sentence_distribution, class3_stats['complexSentenceDistribution']['mean'], class3_stats['complexSentenceDistribution']['stdev'])
+        # print(probability_stopwords_frequency, probability_simple_sentence_distribution,
+        #       probability_compound_sentence_distribution, probability_complex_sentence_distribution)
+        class3_probability = (probability_stopwords_frequency*probability_simple_sentence_distribution *
+                              probability_compound_sentence_distribution*probability_complex_sentence_distribution) * class3_occurrence_ratio
+        # print(class3_probability)
+        # print(class1_probability, class2_probability, class3_probability)
+        if(class1_probability > class2_probability and class1_probability > class3_probability):
+            print('Predicted Class 1 - Faith Oneya, Actual - Abigail Arunga')
+        elif(class2_probability > class1_probability and class2_probability > class3_probability):
+            print('Predicted Class 2 - Bitange Ndemo, Actual - Abigail Arunga')
+        elif(class3_probability > class1_probability and class3_probability > class2_probability):
+            print('Predicted Class 3 - Abigail Arunga, Actual - Abigail Arunga')
         i += 1
 
 
