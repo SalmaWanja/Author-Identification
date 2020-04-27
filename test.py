@@ -128,19 +128,19 @@ def naive_bayes():
         i += 1
 
     # class 1
-    class1_stopwords_frequency_mean = statistics.mean(
+    class1_stopwords_frequency_mean = mean(
         class1_stopwords_frequency_arr)
-    class1_stopwords_frequency_stdev = statistics.stdev(
+    class1_stopwords_frequency_stdev = stdev(
         class1_stopwords_frequency_arr)
     # class2
-    class2_stopwords_frequency_mean = statistics.mean(
+    class2_stopwords_frequency_mean = mean(
         class2_stopwords_frequency_arr)
-    class2_stopwords_frequency_stdev = statistics.stdev(
+    class2_stopwords_frequency_stdev = stdev(
         class2_stopwords_frequency_arr)
     # class3
-    class3_stopwords_frequency_mean = statistics.mean(
+    class3_stopwords_frequency_mean = mean(
         class3_stopwords_frequency_arr)
-    class3_stopwords_frequency_stdev = statistics.stdev(
+    class3_stopwords_frequency_stdev = stdev(
         class3_stopwords_frequency_arr)
 
     # FEATURE SENTENCE DISTRIBUTION
@@ -160,19 +160,19 @@ def naive_bayes():
         i += 1
 
      # class 1
-    class1_simple_sentence_distribution_mean = statistics.mean(
+    class1_simple_sentence_distribution_mean = mean(
         class1_simple_sentence_distribution_arr)
-    class1_simple_sentence_distribution_stdev = statistics.stdev(
+    class1_simple_sentence_distribution_stdev = stdev(
         class1_simple_sentence_distribution_arr)
     # class2
-    class2_simple_sentence_distribution_mean = statistics.mean(
+    class2_simple_sentence_distribution_mean = mean(
         class2_simple_sentence_distribution_arr)
-    class2_simple_sentence_distribution_stdev = statistics.stdev(
+    class2_simple_sentence_distribution_stdev = stdev(
         class2_simple_sentence_distribution_arr)
     # class3
-    class3_simple_sentence_distribution_mean = statistics.mean(
+    class3_simple_sentence_distribution_mean = mean(
         class3_simple_sentence_distribution_arr)
-    class3_simple_sentence_distribution_stdev = statistics.stdev(
+    class3_simple_sentence_distribution_stdev = stdev(
         class3_simple_sentence_distribution_arr)
 
     # COMPOUND SENTENCE DISTRIBUTION
@@ -190,19 +190,19 @@ def naive_bayes():
             sentence_length_distribution(dataset[20+i][1])[1])
         i += 1
      # class 1
-    class1_compound_sentence_distribution_stdev = statistics.stdev(
+    class1_compound_sentence_distribution_stdev = stdev(
         class1_compound_sentence_distribution_arr)
-    class1_compound_sentence_distribution_mean = statistics.mean(
+    class1_compound_sentence_distribution_mean = mean(
         class1_compound_sentence_distribution_arr)
     # class2
-    class2_compound_sentence_distribution_mean = statistics.mean(
+    class2_compound_sentence_distribution_mean = mean(
         class2_compound_sentence_distribution_arr)
-    class2_compound_sentence_distribution_stdev = statistics.stdev(
+    class2_compound_sentence_distribution_stdev = stdev(
         class2_compound_sentence_distribution_arr)
     # class3
-    class3_compound_sentence_distribution_mean = statistics.mean(
+    class3_compound_sentence_distribution_mean = mean(
         class3_compound_sentence_distribution_arr)
-    class3_compound_sentence_distribution_stdev = statistics.stdev(
+    class3_compound_sentence_distribution_stdev = stdev(
         class3_compound_sentence_distribution_arr)
 
     # COMPLEX SENTENCE DISTRIBUTION
@@ -220,19 +220,19 @@ def naive_bayes():
             sentence_length_distribution(dataset[20+i][1])[2])
         i += 1
      # class 1
-    class1_complex_sentence_distribution_stdev = statistics.stdev(
+    class1_complex_sentence_distribution_stdev = stdev(
         class1_complex_sentence_distribution_arr)
-    class1_complex_sentence_distribution_mean = statistics.mean(
+    class1_complex_sentence_distribution_mean = mean(
         class1_complex_sentence_distribution_arr)
     # class2
-    class2_complex_sentence_distribution_mean = statistics.mean(
+    class2_complex_sentence_distribution_mean = mean(
         class2_complex_sentence_distribution_arr)
-    class2_complex_sentence_distribution_stdev = statistics.stdev(
+    class2_complex_sentence_distribution_stdev = stdev(
         class2_complex_sentence_distribution_arr)
     # class3
-    class3_complex_sentence_distribution_mean = statistics.mean(
+    class3_complex_sentence_distribution_mean = mean(
         class3_complex_sentence_distribution_arr)
-    class3_complex_sentence_distribution_stdev = statistics.stdev(
+    class3_complex_sentence_distribution_stdev = stdev(
         class3_complex_sentence_distribution_arr)
 
     class1_stats = {'stopwordsFrequency': {'mean': class1_stopwords_frequency_mean, 'stdev': class1_stopwords_frequency_stdev}, 'simpleSentenceDistribution': {'mean': class1_simple_sentence_distribution_mean, 'stdev': class1_simple_sentence_distribution_stdev},
@@ -252,6 +252,16 @@ def calculate_probability(x, mean, stdev):
     num = math.exp(-(float(x)-float(mean))**2/(2*var))
     return num/denom
 
+
+# Calculate the mean of a list of numbers
+def mean(numbers):
+	return sum(numbers)/float(len(numbers))
+
+# calculate standard deviation
+def stdev(numbers):
+	avg = mean(numbers)
+	variance = sum([(x-avg)**2 for x in numbers]) / float(len(numbers)-1)
+	return sqrt(variance)
 
 def test_classifier(class1_stats, class2_stats, class3_stats, dataset, class1_occurrence_ratio, class2_occurrence_ratio, class3_occurrence_ratio):
     labels = {'Faith Oneya': 1, 'Bitange Ndemo': 2, 'Abigail Arunga': 3}
