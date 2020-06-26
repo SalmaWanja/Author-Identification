@@ -10,7 +10,7 @@ from math import pi
 from math import exp
 
 import nltk
-nltk.download('stopwords')
+# nltk.download('stopwords')
 app = Flask(__name__)
 CORS(app)
 
