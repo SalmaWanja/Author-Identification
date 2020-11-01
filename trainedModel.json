@@ -1,0 +1,234 @@
+{
+  "classData": {
+    "class1_stats": {
+      "stopwordsFrequency": {
+        "mean": 0.4250342992699285,
+        "stdev": 0.018867905532687655
+      },
+      "simpleSentenceDistribution": {
+        "mean": 0.3206104746749399,
+        "stdev": 0.09246761593110472
+      },
+      "compoundSentenceDistribution": {
+        "mean": 0.2790099190544493,
+        "stdev": 0.046513105615868605
+      },
+      "complexSentenceDistribution": {
+        "mean": 0.4003796062706108,
+        "stdev": 0.10470799933404158
+      },
+      "averageSentencelength": {
+        "mean": 112.1004561184235,
+        "stdev": 12.619066256527642
+      }
+    },
+    "class2_stats": {
+      "stopwordsFrequency": {
+        "mean": 0.4069723079297661,
+        "stdev": 0.016320673648402447
+      },
+      "simpleSentenceDistribution": {
+        "mean": 0.297452278849738,
+        "stdev": 0.12351605205531115
+      },
+      "compoundSentenceDistribution": {
+        "mean": 0.25098137603809106,
+        "stdev": 0.08872879298821784
+      },
+      "complexSentenceDistribution": {
+        "mean": 0.4515663451121708,
+        "stdev": 0.12548226628105305
+      },
+      "averageSentencelength": {
+        "mean": 140.38149656185047,
+        "stdev": 26.721305742782388
+      }
+    },
+    "class3_stats": {
+      "stopwordsFrequency": {
+        "mean": 0.3862604188048668,
+        "stdev": 0.025004416036342448
+      },
+      "simpleSentenceDistribution": {
+        "mean": 0.20829077926174117,
+        "stdev": 0.08300144664236665
+      },
+      "compoundSentenceDistribution": {
+        "mean": 0.35438895093613787,
+        "stdev": 0.13244354505408973
+      },
+      "complexSentenceDistribution": {
+        "mean": 0.43732026980212096,
+        "stdev": 0.11815802039207825
+      },
+      "averageSentencelength": {
+        "mean": 140.5646211110594,
+        "stdev": 21.85850519587439
+      }
+    },
+    "class4_stats": {
+      "stopwordsFrequency": {
+        "mean": 0.3945095350594626,
+        "stdev": 0.022653435560877278
+      },
+      "simpleSentenceDistribution": {
+        "mean": 0.27760261177055945,
+        "stdev": 0.06922564520685645
+      },
+      "compoundSentenceDistribution": {
+        "mean": 0.3314190568715775,
+        "stdev": 0.07946376608739869
+      },
+      "complexSentenceDistribution": {
+        "mean": 0.3909783313578629,
+        "stdev": 0.07746362818643057
+      },
+      "averageSentencelength": {
+        "mean": 133.68060917297365,
+        "stdev": 8.511022828736044
+      }
+    },
+    "class5_stats": {
+      "stopwordsFrequency": {
+        "mean": 0.41797298917161724,
+        "stdev": 0.015846172205010795
+      },
+      "simpleSentenceDistribution": {
+        "mean": 0.38226900111975376,
+        "stdev": 0.07902053838205379
+      },
+      "compoundSentenceDistribution": {
+        "mean": 0.25206399247447614,
+        "stdev": 0.0751310407287558
+      },
+      "complexSentenceDistribution": {
+        "mean": 0.3656670064057701,
+        "stdev": 0.09126206691498148
+      },
+      "averageSentencelength": {
+        "mean": 86.808758443791,
+        "stdev": 24.039013449861613
+      }
+    },
+    "class6_stats": {
+      "stopwordsFrequency": {
+        "mean": 0.41916030478310456,
+        "stdev": 0.03191202073867171
+      },
+      "simpleSentenceDistribution": {
+        "mean": 0.39109793186422115,
+        "stdev": 0.09352936486812627
+      },
+      "compoundSentenceDistribution": {
+        "mean": 0.2745746371310686,
+        "stdev": 0.08461712959650769
+      },
+      "complexSentenceDistribution": {
+        "mean": 0.33432743100471013,
+        "stdev": 0.1305033671703935
+      },
+      "averageSentencelength": {
+        "mean": 95.29921014092483,
+        "stdev": 28.578876435693704
+      }
+    },
+    "class7_stats": {
+      "stopwordsFrequency": {
+        "mean": 0.4009770989340844,
+        "stdev": 0.026370313000946468
+      },
+      "simpleSentenceDistribution": {
+        "mean": 0.270667174100994,
+        "stdev": 0.13553578167722016
+      },
+      "compoundSentenceDistribution": {
+        "mean": 0.3699864614666322,
+        "stdev": 0.11362431884747748
+      },
+      "complexSentenceDistribution": {
+        "mean": 0.3593463644323738,
+        "stdev": 0.12218127650144346
+      },
+      "averageSentencelength": {
+        "mean": 135.55499560880432,
+        "stdev": 32.40632085197327
+      }
+    },
+    "class8_stats": {
+      "stopwordsFrequency": {
+        "mean": 0.4130139120980768,
+        "stdev": 0.015271243634322761
+      },
+      "simpleSentenceDistribution": {
+        "mean": 0.19806144120389013,
+        "stdev": 0.0837061900564457
+      },
+      "compoundSentenceDistribution": {
+        "mean": 0.3025170000896919,
+        "stdev": 0.05041356485378579
+      },
+      "complexSentenceDistribution": {
+        "mean": 0.499421558706418,
+        "stdev": 0.10621120712231244
+      },
+      "averageSentencelength": {
+        "mean": 160.35290671449147,
+        "stdev": 36.22283493274966
+      }
+    },
+    "class9_stats": {
+      "stopwordsFrequency": {
+        "mean": 0.37535782761472064,
+        "stdev": 0.024961294603145598
+      },
+      "simpleSentenceDistribution": {
+        "mean": 0.29016556681810735,
+        "stdev": 0.07031650988426384
+      },
+      "compoundSentenceDistribution": {
+        "mean": 0.34849897082063763,
+        "stdev": 0.12407900960787747
+      },
+      "complexSentenceDistribution": {
+        "mean": 0.3613354623612549,
+        "stdev": 0.14724340870923733
+      },
+      "averageSentencelength": {
+        "mean": 125.19820697588163,
+        "stdev": 27.549655073964864
+      }
+    },
+    "class10_stats": {
+      "stopwordsFrequency": {
+        "mean": 0.38818738209122167,
+        "stdev": 0.024225740481500252
+      },
+      "simpleSentenceDistribution": {
+        "mean": 0.22207891962793924,
+        "stdev": 0.13004153529286996
+      },
+      "compoundSentenceDistribution": {
+        "mean": 0.3349827460121578,
+        "stdev": 0.08262635098846342
+      },
+      "complexSentenceDistribution": {
+        "mean": 0.442938334359903,
+        "stdev": 0.1416901126340645
+      },
+      "averageSentencelength": {
+        "mean": 142.99155435160338,
+        "stdev": 22.865244292196707
+      }
+    },
+    "class1_occurrence_ratio": 0.09547738693467336,
+    "class2_occurrence_ratio": 0.10050251256281408,
+    "class3_occurrence_ratio": 0.10050251256281408,
+    "class4_occurrence_ratio": 0.10050251256281408,
+    "class5_occurrence_ratio": 0.10050251256281408,
+    "class6_occurrence_ratio": 0.10050251256281408,
+    "class7_occurrence_ratio": 0.10050251256281408,
+    "class8_occurrence_ratio": 0.10050251256281408,
+    "class9_occurrence_ratio": 0.10050251256281408,
+    "class10_occurrence_ratio": 0.10050251256281408
+  }
+}
